@@ -3,5 +3,8 @@
   border-radius: 10px;
   background-color: #fff;
   overflow: hidden;
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }

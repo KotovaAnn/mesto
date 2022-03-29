@@ -1,9 +1,7 @@
 .elements__button-like {
   width: 22px;
   height: 19px;
-  position: absolute;
-  bottom: 35px;
-  right: 20px;
   border: none;
   padding: 0;
+  margin: 0 20px 0 0;
 }
