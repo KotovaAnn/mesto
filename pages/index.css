@@ -8,7 +8,7 @@
 @import url(../blocks/button/_active/button_active.css);
 
 @import url(../blocks/header/header.css);
-@import url(../blocks/header/__place-header/logo__place-header.css);
+@import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/content/content.css);
 
