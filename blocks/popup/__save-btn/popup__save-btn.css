@@ -10,3 +10,11 @@
   padding: 14px 0 18px;
   box-sizing: border-box;
 }
+.popup__save-btn:hover {
+  opacity: 0.8;
+}
+@media screen and (max-width: 550px) {
+   .popup__save-btn: {
+      font-size: 14px;
+   }
+}

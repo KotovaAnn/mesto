@@ -1,4 +1,5 @@
 .profile__info-block {
   display: flex;
   align-items: center;
+  box-sizing: border-box;
 }

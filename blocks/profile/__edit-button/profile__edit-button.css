@@ -2,6 +2,7 @@
   width: 24px;
   height: 24px;
   background: url(../../../images/Edit-Button.svg) no-repeat;
+  border: 1px solid #fff;
   background-size: cover;
   margin-top: 10px;
 }
