@@ -3,8 +3,11 @@
   font-weight: 500;
   line-height: 1.2;
   color: #fff;
-  margin: 22px 0 16px;
+  margin: 0 0 16px;
   padding-right: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media screen and (max-width: 597px) {
   .profile__title {
@@ -15,7 +18,6 @@
 }
 @media screen and (max-width:701px) {
   .profile__title {
-    margin: 0 0px 14px;  
+    margin: 0 0px 14px;
   }
 }
-    

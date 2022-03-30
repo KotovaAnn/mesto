@@ -4,6 +4,9 @@
   line-height: 1.2;
   color: #fff;
   margin: 0 0 25px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media screen and (max-width: 597px) {
   .profile__subtitle {
