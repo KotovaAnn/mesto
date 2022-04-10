@@ -95,14 +95,14 @@ function closePopupAddElement() {
   popupAddElement.classList.remove('popup_opened');
 }
 
-function onSubmit1(event) {
+function onSubmitPopupForm(event) {
   event.preventDefault();
   profileTitle.textContent = inputName.value;
   profileSubtitle.textContent = inputAboutself.value;
   closePopup();
 }
 
-function onSubmit2(event) {
+function onSubmitPopupFormAddElement(event) {
   event.preventDefault();
   handleAddElement();
   closePopupAddElement();
@@ -137,8 +137,8 @@ function closePopupOpenPicture () {
 }
 
 containerElements.addEventListener('click', toggleActiveLikeButton);
-popupForm.addEventListener('submit', onSubmit1);
-popupFormAddElement.addEventListener('submit', onSubmit2);
+popupForm.addEventListener('submit', onSubmitPopupForm);
+popupFormAddElement.addEventListener('submit', onSubmitPopupFormAddElement);
 editButton.addEventListener('click', openedPopup);
 addButton.addEventListener('click', openedPopupAddElement);
 closeButton.addEventListener('click', closePopup);
