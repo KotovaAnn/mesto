@@ -129,6 +129,7 @@ function openPopupOpenPicture (event) {
   const popupPictureTitle = popupOpenPicture.querySelector('.popup__title-picture');
   popupPicture.src = picture.src;
   popupPictureTitle.textContent = elementTitle.textContent;
+  popupPicture.alt = elementTitle.textContent;
   console.log(element);
 }
 
