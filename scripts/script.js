@@ -37,15 +37,15 @@ let inputAboutself = document.querySelector('.popup__form-item_input_aboutself')
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
-const popupAddElement = document.querySelector('.popup__add-element');
+const popupAddElement = document.querySelector('.popup_add-element');
 const popupFormAddElement = document.querySelector('.popup__form_add_element');
 const addButton = document.querySelector('.profile__add-button');
-const closeButtonPopupAdded = document.querySelector('.popup__close-btn_place_popup__add-element');
+const closeButtonPopupAdded = popupAddElement.querySelector('.popup__close-btn');
 let inputTitle = document.querySelector('.popup__form-item_input_title');
 let inputLinkPicture = document.querySelector('.popup__form-item_input_link-picture');
 
-const popupOpenPicture = document.querySelector('.popup__open-picture');
-const closeButtonPopupPicture = document.querySelector('.popup__close-btn_place_popup__open-picture');
+const popupOpenPicture = document.querySelector('.popup_open-picture');
+const closeButtonPopupPicture = popupOpenPicture.querySelector('.popup__close-btn');
 
 const likesButton = document.querySelectorAll('.element__button-like');
 const deleteButton = document.querySelector('.element__button-delete');
