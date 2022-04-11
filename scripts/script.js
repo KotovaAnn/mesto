@@ -68,7 +68,6 @@ function createElement (item) {
   picture.alt = item.name;
   buttonDelete.addEventListener('click', deleteElement);
   buttonLike.addEventListener('click', handleLikeButton);
-  //picture.addEventListener('click', openPopupOpenPicture);
   picture.addEventListener('click', () => handleCardClick(item));
   return newitem;
 }
@@ -90,10 +89,10 @@ function closePopup(popup) {
 }
 
 function handleAddElement(event) {
- const inputTitleValue = document.querySelector('.popup__form-item_input_title').value;
- const inputLinkPictureValue = document.querySelector('.popup__form-item_input_link-picture').value;
- const elementAdded = createElement({ name: inputTitleValue, link: inputLinkPictureValue });
- containerElements.prepend(elementAdded);
+  const inputTitleValue = inputTitle.value;
+  const inputLinkPictureValue = inputLinkPicture.value;
+  const elementAdded = createElement({ name: inputTitleValue, link: inputLinkPictureValue });
+  containerElements.prepend(elementAdded);
 }
 
 function onSubmitFormProfilePopup(event) {
@@ -106,6 +105,8 @@ function onSubmitFormProfilePopup(event) {
 function onSubmitPopupFormAddElement(event) {
   event.preventDefault();
   handleAddElement();
+  inputTitle.value = "";
+  inputLinkPicture.value = "";
   closePopup(cardPopup);
 }
 
