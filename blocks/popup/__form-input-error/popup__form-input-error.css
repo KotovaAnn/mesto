@@ -1,0 +1,8 @@
+.popup__form-input-error {
+  display: block;
+  color: #ff0000;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+  margin: -35px 0 7px 0;
+}

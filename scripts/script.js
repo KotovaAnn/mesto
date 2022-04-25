@@ -49,6 +49,8 @@ const buttonCloseImagePopup = imagePopup.querySelector('.popup__close-btn');
 const popupPicture = imagePopup.querySelector('.popup__picture');
 const popupPictureTitle = imagePopup.querySelector('.popup__title-picture');
 
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
 function render () {
   const elements = initialCards.map(createElement);
   containerElements.append(...elements);
@@ -73,6 +75,19 @@ render ()
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popupList.forEach((popupElement) => {
+    popupElement.addEventListener('click', overlayClick);
+  })
+  document.addEventListener('keydown', escClick);
+}
+
+function escClick (evt) {
+  if (evt.key === "Escape") {
+   const closepopup = document.querySelector('.popup_opened');
+   const closepopupForm = closepopup.querySelector('.popup__form');
+   closepopup.classList.remove('popup_opened');
+   closepopupForm.reset();
+  }
 }
 
 function openPropfilePopup() {
@@ -123,6 +138,14 @@ function handleCardClick(item) {
   popupPictureTitle.textContent = item.name;
   popupPicture.alt = item.name;
   openPopup(imagePopup);
+}
+
+function overlayClick (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+    const evttargetForm = (evt.target).querySelector('.popup__form');
+    evttargetForm.reset();
+  }
 }
 
 popupForm.addEventListener('submit', onSubmitFormProfilePopup);
