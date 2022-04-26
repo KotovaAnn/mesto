@@ -4,15 +4,15 @@
   position: absolute;
   background: url(../../../images/Close-Icon.svg) no-repeat;
   background-size: cover;
-  top: -40px;
-  right: -40px;
+  top: -74px;
+  right: -74px;
   border: none;
 }
 @media screen and (max-width: 570px) {
   .popup__close-btn {
     width: 20px;
     height: 20px;
-    top: -36px;
-    right: 0;
+    top: -61px;
+    right: -20px;
   }
 }

@@ -2,14 +2,9 @@ function enableValidation(config) {
 const formList = Array.from(document.querySelectorAll(config.formSelector));
 
 formList.forEach((formElement) => {
-  formElement.addEventListener('submit', handleForSubmit);
   formElement.addEventListener('input', (evt) => handleForImput(evt, formElement, config));
   toggleButtonState(formElement, config);
 });
-}
-
-function handleForSubmit(evt, formElement) {
-  evt.preventDefault();
 }
 
 function handleForImput(evt, formElement, config) {

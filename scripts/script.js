@@ -48,23 +48,24 @@ render ()
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', (evt) => escClick(evt, popup));
-  /*const error = popup.querySelector('.popup__error_visible');*/
-  
+  document.addEventListener('keydown', escClick); 
+}
+function resetError(popup) {
   const inputList = popup.querySelectorAll('.popup__form-item');
   if(popup.querySelector('.popup__error_visible')) {
     inputList.forEach((input) => {     
       const error = document.querySelector(`#${input.id}-error`);
-      console.log(error);
       input.classList.remove('popup__form-item_type_error');
-      error.classList.remove(config.errorClass);
+      error.classList.remove('popup__form-item_type_error');
       error.textContent = '';
-  });   
+    });
+  }  
 }
 
 function escClick (evt, popup) {
   if (evt.key === "Escape") {
-    closePopup(popup);
+    const closepopup = document.querySelector('.popup_opened'); 
+    closePopup(closepopup);
   }
 }
 
@@ -72,11 +73,13 @@ function openPropfilePopup() {
   inputName.value = profileTitle.textContent;
   inputAboutself.value = profileSubtitle.textContent;
   openPopup(profilePopup);
+  resetError(profilePopup);
 }
 
 function openCardPopup() {
   popupFormAddElement.reset();
   openPopup(cardPopup);
+  resetError(cardPopup);
 }
 
 function closePopup(popup) {
@@ -110,9 +113,6 @@ function onSubmitPopupFormAddElement(event) {
 function handleLikeButton (event) {
   const element = event.target;
     element.classList.toggle('element__button-like_active');
-  /*if (element.type === "button") {
-    element.classList.toggle('element__button-like_active');
-  }*/
 }
 
 function deleteElement(event) {
@@ -140,4 +140,4 @@ buttonAdd.addEventListener('click', openCardPopup);
 buttonCloseProfilePopup.addEventListener('click', () => closePopup(profilePopup));
 buttonCloseCardPopup.addEventListener('click', () => closePopup(cardPopup));
 buttonCloseImagePopup.addEventListener('click', () => closePopup(imagePopup));
-popupList.forEach((popupElement) => {popupElement.addEventListener('click', overlayClick)});
+popupList.forEach(popupElement => {popupElement.addEventListener('click', overlayClick)});

@@ -1,8 +1,8 @@
 .popup__error_type_aboutself-input-error {
-  top: 195px;
+  top: 161px;
 }
 @media screen and (max-width: 550px) {
   .popup__error_type_aboutself-input-error {
-    top: 216px;
+    top: 180px;
   }
 }
