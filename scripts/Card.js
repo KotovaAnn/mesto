@@ -1,40 +1,15 @@
 import { handleCardClick } from './index.js';
-import { config } from '../utils.js';
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 class Card {
   _title;
   _link;
   _cardSelector;
+  _handleCardClick;
 
-   constructor(item, cardSelector) {
+   constructor(item, cardSelector, handleCardClick) {
      this._title = item.name;
      this._link = item.link;
+     this._handleCardClick = handleCardClick;
      this._cardSelector = cardSelector;
    }
 
@@ -50,32 +25,35 @@ class Card {
 
    generateCard() {
     this._element = this._getCardElement();
+    this._cardImage = this._element.querySelector('.element__place-img');
+    this._elementButtonLike = this._element.querySelector('.element__button-like');
     this._setEventListeners();
-    this._element.querySelector('.element__place-img').src = `${this._link}`;
+    this._cardImage.src = `${this._link}`;
     this._element.querySelector('.element__title').textContent = this._title;
-    this._element.querySelector('.element__place-img').alt = this._title;
+    this._cardImage.alt = this._title;
 
     return this._element;
    }
 
    _deleteCard() {
     this._element.remove();
+    this._element = null;
    }
 
    _likeCard() {
-     this._element.querySelector('.element__button-like').classList.toggle('element__button-like_active');
+     this._elementButtonLike.classList.toggle('element__button-like_active');
    }
 
    _clickCard() {
       const item = ({ name: this._title, link: this._link });
-      handleCardClick(item);
+      this._handleCardClick(item);
    }
 
    _setEventListeners() {
     this._element.querySelector('.element__button-delete').addEventListener('click', () => {
       this._deleteCard();
     });
-    this._element.querySelector('.element__button-like').addEventListener('click', () => {
+    this._elementButtonLike.addEventListener('click', () => {
       this._likeCard();
     });
     this._element.querySelector('.element__place-img').addEventListener('click', () => {
@@ -83,15 +61,5 @@ class Card {
     });
    }
  }
-
-function renderItems() {
-  initialCards.forEach((item) => {
-    const card = new Card (item, '.template');
-    const cardElement = card.generateCard();
-    document.querySelector('.elements__group-elements').append(cardElement);
-  });
-}
-
-renderItems();
 
 export { Card };
