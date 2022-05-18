@@ -1,12 +1,12 @@
-import { handleCardClick } from './index.js';
-
 class Card {
+  _item;
   _title;
   _link;
   _cardSelector;
   _handleCardClick;
 
    constructor(item, cardSelector, handleCardClick) {
+     this._item = item;
      this._title = item.name;
      this._link = item.link;
      this._handleCardClick = handleCardClick;
@@ -45,8 +45,7 @@ class Card {
    }
 
    _clickCard() {
-      const item = ({ name: this._title, link: this._link });
-      this._handleCardClick(item);
+      this._handleCardClick(this._item);
    }
 
    _setEventListeners() {
@@ -56,7 +55,7 @@ class Card {
     this._elementButtonLike.addEventListener('click', () => {
       this._likeCard();
     });
-    this._element.querySelector('.element__place-img').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._clickCard();
     });
    }

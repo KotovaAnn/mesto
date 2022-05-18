@@ -34,10 +34,7 @@ validFormAddElement.enableValidation();
 
 function renderItems() {
   initialCards.forEach((item) => {
-    /*const card = new Card (item, '.template', handleCardClick);
-    const cardElement = card.generateCard();
-    document.querySelector('.elements__group-elements').append(cardElement);*/
-    createdCard(item);
+    containerElements.prepend(createdCard(item));;
   });
 }
 renderItems();
@@ -79,13 +76,13 @@ function handleAddElement(event) {
   /*const elementAdded = new Card (addedObject, '.template');
   const cardElement = elementAdded.generateCard();
   containerElements.prepend(cardElement);*/
-  createdCard(addedObject);
+  containerElements.prepend(createdCard(addedObject));
 }
 
 function createdCard(item) {
   const card = new Card (item, '.template', handleCardClick);
   const cardElement = card.generateCard();
-  containerElements.prepend(cardElement);
+  return cardElement;
 }
 
 function onSubmitFormProfilePopup(event) {
