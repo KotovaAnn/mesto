@@ -3,18 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место Russia</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип Место России">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место России">
       </header>
       <main class="content">
         <section class="profile">
           <div class="profile__left-block-profile">
-            <img class="profile__avatar" src="./images/profile-avatar.png" alt="Аватар профиля">
+            <img class="profile__avatar" src="<%=require('./images/profile-avatar.png')%>" alt="Аватар профиля">
             <div class="profile__info">
               <div class="profile__info-block">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -31,41 +30,7 @@
           <ul class="elements__group-elements">
 
           </ul>
-          <!--
-          <ul class="elements__group-elements">
-            <li class="element">
-              <img class="element__place-img" src="./images/karachaevsk.jpg" alt="Карачаевск">
-              <h3 class="element__title">Карачаевск</h3>
-              <button class="element__button-like" type="button"></button>
-            </li>
-            <li class="element">
-              <img class="element__place-img" src="./images/Gora-Elbrus.jpg" alt="Гора Эльбрус">
-              <h3 class="element__title">Гора Эльбрус</h3>
-              <button class="element__button-like" type="button"></button>
-            </li>
-            <li class="element">
-              <img class="element__place-img" src="./images/Dombuy.jpg" alt="Домбай">
-              <h3 class="element__title">Домбай</h3>
-              <button class="element__button-like" type="button"></button>
-            </li>
-            <li class="element">
-              <img class="element__place-img" src="./images/Gora-Elbrus.jpg" alt="Гора Эльбрус">
-              <h3 class="element__title">Гора Эльбрус</h3>
-              <button class="element__button-like" type="button"></button>
-            </li>
-            <li class="element">
-              <img class="element__place-img" src="./images/Dombuy.jpg" alt="Домбай">
-              <h3 class="element__title">Домбай</h3>
-              <button class="element__button-like" type="button"></button>
-            </li>
-            <li class="element">
-              <img class="element__place-img" src="./images/Karachaevo-Cherkessiaja.jpg" alt="Карачаево-Черкессия">
-              <h3 class="element__title">Карачаево-Черкессия</h3>
-              <button class="element__button-like" type="button"></button>
-            </li>
-          </ul>
-        -->
-        </section>
+
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
@@ -151,6 +116,5 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

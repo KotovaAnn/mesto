@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "**Описание проекта:** Одностраничный сайт по типу Инстаграма. Представляет собой галерею фотографий на тему \"Места России\". Выполнена работа по адаптивности сайта для различных разрешений. Сайт одинаково хорошо  отображается как на широкоформатных экранах, так и на очень маленьком мобильном разрешении. **Реализация работы:** В процессе создания проекта задействованы знания html и CSS, адаптивной верстки, классической файловой структуры по БЭМ, основ JavaScript. **Технические требования:** Наличие редактора кода и современного браузера. **Ссылка на проект:** [mesto-russia.ru](https://kotovaann.github.io/mesto/)",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KotovaAnn/mesto.git"
+  },
+  "author": "Kotova Ann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KotovaAnn/mesto/issues"
+  },
+  "homepage": "https://github.com/KotovaAnn/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.10",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss-loader": "^7.0.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.1"
+  },
+  "dependencies": {
+    "core-js": "^3.22.7"
+  }
+}

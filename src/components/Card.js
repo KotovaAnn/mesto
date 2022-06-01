@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
   _item;
   _title;
   _link;
@@ -60,5 +60,3 @@ class Card {
     });
    }
  }
-
-export { Card };

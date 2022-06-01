@@ -6,6 +6,7 @@ export const config = {
   errorClass: 'popup__error_visible',
   inputErrorClass: 'popup__form-item_type_error'
 };
+
 export const initialCards = [
   {
     name: 'Архыз',
@@ -32,3 +33,5 @@ export const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+export const cardListSelector = '.elements__group-elements';
