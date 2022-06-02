@@ -11,6 +11,8 @@ const popupForm = document.querySelector('.popup__form');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
+const inputName = document.querySelector('.popup__form-item_input_name');
+const inputAboutself = document.querySelector('.popup__form-item_input_aboutself');
 
 const popupFormAddElement = document.querySelector('.popup__form_add_element');
 const buttonAdd = document.querySelector('.profile__add-button');
@@ -23,9 +25,7 @@ validFormAddElement.enableValidation();
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = new Card (item, '.template', handleCardClick);
-    const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
+    cardList.addItem(createCard(item));
   }
 }, cardListSelector);
 
@@ -40,17 +40,30 @@ const profilePopup = new PopupWithForm ({
     profilePopup.close();
   }});
 
-  const cardPopup = new PopupWithForm ({
-    popupSelector: '.popup_add-element',
-    handleFormSubmit: (data) => {
-      const addedObject = { name: data.inputitle, link: data.inputLinkPicture };
-      const addElement = createdCard(addedObject);
-      cardList.addItem(addElement);
-      cardPopup.close();
-  }});
+profilePopup.setEventListeners();
+
+const cardPopup = new PopupWithForm ({
+  popupSelector: '.popup_add-element',
+  handleFormSubmit: (data) => {
+    const addedObject = { name: data.inputitle, link: data.inputLinkPicture };
+    cardList.addItem(createCard(addedObject));
+    cardPopup.close();
+}});
+
+cardPopup.setEventListeners();
+
+const imagePopup = new PopupWithImage('.popup_open-picture');
+imagePopup.setEventListeners();
+
+function createCard(item) {
+  const card = new Card (item, '.template', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
 
 function openPropfilePopup() {
-  profileUserInfo.getUserInfo();
+  inputName.value = profileUserInfo.getUserInfo().inputName;
+  inputAboutself.value = profileUserInfo.getUserInfo().inputAboutself;
   validForm.resetErrore();
   profilePopup.open();
 }
@@ -61,14 +74,7 @@ function openCardPopup() {
   cardPopup.open();
 }
 
-function createdCard(item) {
-  const card = new Card (item, '.template', handleCardClick);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
 function handleCardClick(item) {
-  const imagePopup = new PopupWithImage('.popup_open-picture', item);
   imagePopup.open(item);
 }
 
