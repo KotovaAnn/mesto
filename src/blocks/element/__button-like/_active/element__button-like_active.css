@@ -1,6 +1,6 @@
 .element__button-like_active {
-    background: url(../../../../images/like-active.svg);
-    background-size: cover;
+  background: url(../../../../images/like-active.svg);
+  background-size: cover;
 }
 .element__button-like_active:hover {
   opacity: 0.5;
