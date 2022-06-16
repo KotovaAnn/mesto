@@ -9,8 +9,29 @@ export default class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: {
-        authorization: this._token
+        authorization: this._token,
+        'Content-Type': 'application/json'
       }
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  editAvatar(linkAvatar) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        avatar: linkAvatar
+      })
     })
     .then(res => {
       if (res.ok) {
@@ -39,7 +60,7 @@ export default class Api {
 
   editProfile(inputValues) {
     const body = inputValues;
-    fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
         authorization: this._token,
@@ -60,16 +81,15 @@ export default class Api {
   }
 
   addNewCard(data) {
-    const body = data;
-    fetch(`${this._url}/cards`, {
+   return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: body.name,
-        link: body.link
+        name: data.name,
+        link: data.link
       })
     })
     .then(res => {
@@ -80,13 +100,7 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     })
   }
-/*
-  getLikes(item) {
-    const likeContainer = document.querySelector('.element__button-like-number');
-    const likesLength = item.likes.length;
-    likeContainer.textContent = likesLength;
-  }
-*/
+
   removeCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
@@ -137,6 +151,7 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     })
   }
+
 }
 
 

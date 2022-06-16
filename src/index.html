@@ -13,6 +13,9 @@
       <main class="content">
         <section class="profile">
           <div class="profile__left-block-profile">
+            <div class="profile__edit-avatar">
+              <img src="<%=require('./images/editProfile.svg')%>" alt="Иконка редактировать">
+            </div>
             <img class="profile__avatar" src="<%=require('./images/profile-avatar.png')%>" alt="Аватар профиля">
             <div class="profile__info">
               <div class="profile__info-block">
@@ -125,6 +128,27 @@
           <button class="button popup__close-btn popup__close-btn_popup-delete" type="button"></button>
         </div>
       </div>
+
+      <div class="popup popup_edit-avatar">
+        <div class="popup__content popup__content_edit-avatar">
+          <form class="popup__form popup__form_edite-avatar" name="popupFormEditAvatar" novalidate>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <button class="button popup__close-btn" type="button"></button>
+            <input
+            id="avatar-link-input"
+            class="popup__form-item
+            popup__form-item_input_link-avatar"
+            required
+            type="url"
+            name="inputLinkAvatar"
+            placeholder="Ссылка на аватар"
+            >
+            <span class="popup__error popup__error_type_link-input-error popup__error_edit-avatar" id="avatar-link-input-error"></span>
+            <button class="popup__save-btn popup__save-btn-edit-element" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+
     </div>
   </body>
 </html>

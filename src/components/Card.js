@@ -1,11 +1,4 @@
 export default class Card {
-  _item;
-  _title;
-  _link;
-  _cardSelector;
-  _handleCardClick;
-  _userId;
-  _handleDeliteIconclick;
 
    constructor({item, cardSelector, userId, handleCardClick, handleDeliteIconclick, handleLikeClick}) {
      this._item = item;
@@ -21,7 +14,7 @@ export default class Card {
    getCardId() {
     return this._item._id;
    }
-   
+
    _getCardElement() {
      const CardElement = document
       .querySelector(this._cardSelector)
@@ -44,8 +37,8 @@ export default class Card {
     if (this._item.owner._id == this._userId) {
       this._visualBasket();
     }
-    this.getLikes();
 
+    this.getLikes();
     return this._element;
    }
 
@@ -57,20 +50,27 @@ export default class Card {
    getLikes() {
     this._likeContainer = this._element.querySelector('.element__button-like-number');
     this._likeContainer.textContent = this._likes.length;
+    if (this.isLiked()) {
+      this.addlikeCard();
+    } else {
+      this.removeLikeCard();
+    }
   }
 
   updateLikes(likes) {
     this._likes = likes;
     this._likeContainer.textContent = this._likes.length;
     if (this.isLiked()) {
-      this._elementButtonLike.classList.remove('element__button-like_active');
+      this.addlikeCard();
     } else {
-      this._elementButtonLike.classList.add('element__button-like_active');
+      this.removeLikeCard();
     }
   }
 
   isLiked() {
-    return this._likes.some(item => item._id === item.userId);
+    return this._likes.some(item => {
+      return item._id === this._userId
+    });
   }
    deleteCard() {
     this._element.remove();

@@ -1,6 +1,7 @@
 .profile__left-block-profile {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 @media screen and (max-width: 597px) {
   .profile__left-block-profile {
