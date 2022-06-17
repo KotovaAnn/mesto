@@ -4,6 +4,12 @@ export default class Api {
     this._url = options.baseUrl;
     this._token = options.headers.authorization;
   }
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
 
   getInfoUser() {
     return fetch(`${this._url}/users/me`, {
@@ -13,13 +19,7 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(this._checkResponse);
   }
 
   editAvatar(linkAvatar) {
@@ -30,16 +30,10 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        avatar: linkAvatar
+        avatar: linkAvatar.inputLinkAvatar
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(this._checkResponse);
   }
 
   getInitialCards() {
@@ -49,13 +43,7 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+    .then(this._checkResponse);
   }
 
   editProfile(inputValues) {
@@ -71,34 +59,22 @@ export default class Api {
         about: body.inputAboutself
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(this._checkResponse);
   }
 
   addNewCard(data) {
-   return fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: data.name,
-        link: data.link
+        name: data.inputitle,
+        link: data.inputLinkPicture
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(this._checkResponse);
   }
 
   removeCard(cardId) {
@@ -109,13 +85,7 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(this._checkResponse);
   }
 
   likeCard(cardId) {
@@ -126,13 +96,7 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(this._checkResponse);
   }
 
   offLikeCard(cardId) {
@@ -143,16 +107,6 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(this._checkResponse);
   }
-
 }
-
-
-
