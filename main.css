@@ -30,7 +30,7 @@
 .popup{background-color:rgba(0,0,0,.5);bottom:0;display:flex;height:0;left:0;opacity:0;overflow:hidden;position:fixed;right:0;top:0;transition:opacity 1s ease-out;width:100vw}
 .popup_open-picture{background-color:rgba(0,0,0,.9);margin:0;padding:0}@media screen and (max-width:570px){.popup_open-picture{min-width:282px}}
 .popup__close-btn{background:url(2ceb783afbab75916ddc.svg) no-repeat;background-size:cover;border:none;height:32px;position:absolute;right:-74px;top:-74px;width:32px}@media screen and (max-width:570px){.popup__close-btn{height:20px;right:-20px;top:-61px;width:20px}}
-.popup .popup__close-btn_popup-delete{right:-40px;top:-40px}@media screen and (max-width:570px){.popup .popup__close-btn_popup-delete{height:20px;right:0;top:-35px;width:20px}}
+.popup .popup__close-btn_popup-delete{right:-80px;top:-80px}@media screen and (max-width:570px){.popup .popup__close-btn_popup-delete{height:20px;right:0;top:-35px;width:20px}}
 .popup__content{background-color:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);box-sizing:border-box;height:330px;margin:0;padding:34px 36px 37px;position:relative;width:430px}@media screen and (max-width:450px){.popup__content{margin:0 19px;min-width:282px;padding:25px 22px;width:100%}}
 .popup .popup__content_delete-card{height:auto}
 .popup .popup__content_edit-avatar{height:auto}
