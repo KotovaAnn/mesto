@@ -34,7 +34,7 @@ export default class Card {
     this._element.querySelector('.element__title').textContent = this._title;
     this._cardImage.alt = this._title;
 
-    if (this._item.owner._id == this._userId) {
+    if (this._item.owner._id === this._userId) {
       this._visualBasket();
     }
 

@@ -12,7 +12,6 @@ const popupForm = document.querySelector('.popup__form');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const avatar = document.querySelector('.profile__avatar');
 const inputName = document.querySelector('.popup__form-item_input_name');
 const inputAboutself = document.querySelector('.popup__form-item_input_aboutself');
 
@@ -25,8 +24,6 @@ const buttobEditAvatar = document.querySelector('.profile__edit-avatar');
 const popupWithConfirm = new PopupWithConfirm('.popup_delete-card');
 popupWithConfirm.setEventListeners();
 
-const container = document.querySelector('.elements__group-elements');
-
 const validForm = new FormValidator(popupForm, config);
 validForm.enableValidation();
 const validFormAddElement = new FormValidator(popupFormAddElement, config);
@@ -34,8 +31,7 @@ validFormAddElement.enableValidation();
 const validFormEditAvatar = new FormValidator(popupFormEditAvatar, config);
 validFormEditAvatar.enableValidation();
 
-const profileUserInfo = new UserInfo ({name: profileTitle, aboutSelf: profileSubtitle }, '.popup');
-//let userId = profileUserInfo.getUserId();
+const profileUserInfo = new UserInfo ({name: profileTitle, aboutSelf: profileSubtitle });
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-43',
@@ -67,32 +63,24 @@ function getCards() {
     })
     .catch((err) => console.log(err));
 }
-/*
-  function getCards() {
-    api.getInitialCards()
-      .then((cards) => {
-        const cardList = new Section({
-          data: cards,
-          renderer: (item) => {
-            cardList.addItem(createCard(item));
-          }
-        }, cardListSelector);
-        cardList.renderItems();
-        return cards;
-      })
-      .catch((err) => console.log(err));
-  }
-*/
 
+/*
   Promise.all([getUserInfo(), getCards()])
   .then(([userInfo, cards]) => {
     getUserInfo();
     getCards();
   })
   .catch((err) => console.log(err));
+*/
+  Promise.all([api.getInfoUser(), api.getInitialCards()])
+  .then(([userInfo, cards]) => {
+    profileUserInfo.setUserInfo(userInfo);
+    cardList.renderItems(cards);
+ })
+   .catch((err) => console.log(err));
 
 const profilePopup = new PopupWithForm ({
-  popupSelector: '.popup',
+  popupSelector: '.popup_profile-popup',
   handleFormSubmit: (inputValues) => {
     api.editProfile(inputValues)
      .then((res) => {
@@ -112,10 +100,10 @@ const cardPopup = new PopupWithForm ({
     api.addNewCard(data)
      .then(item => {
        cardList.addItem(createCard(item));
+       cardPopup.close();
      })
     .catch((err) => console.log(err))
     .finally(res => cardPopup.updateLoading(false, "Сохранить", "Сохранение..."));
-    cardPopup.close();
 }});
 
 cardPopup.setEventListeners();
@@ -149,7 +137,6 @@ function createCard(item) {
     handleDeliteIconclick: (card) => {
       popupWithConfirm.open();
       popupWithConfirm.setSubmitAction( () => {
-
         api.removeCard(item._id)
           .then(() => {
             card.deleteCard();
@@ -212,4 +199,3 @@ function handleCardClick(item) {
 buttonEdit.addEventListener('click', openPropfilePopup);
 buttonAdd.addEventListener('click', openCardPopup);
 buttobEditAvatar.addEventListener('click', openEditAvatarPopup);
-export { handleCardClick };

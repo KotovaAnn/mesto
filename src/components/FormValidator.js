@@ -1,6 +1,7 @@
 export class FormValidator {
     _form;
     _config;
+    _buttonElement;
     _inputList;
 
     constructor(formElement, config) {
